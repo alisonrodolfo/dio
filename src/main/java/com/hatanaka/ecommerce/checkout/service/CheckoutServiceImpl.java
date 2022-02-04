@@ -7,13 +7,13 @@ import com.hatanaka.ecommerce.checkout.event.CheckoutCreatedEvent;
 import com.hatanaka.ecommerce.checkout.repository.CheckoutRepository;
 import com.hatanaka.ecommerce.checkout.resource.checkout.CheckoutRequest;
 import com.hatanaka.ecommerce.checkout.streaming.CheckoutCreatedSource;
+import com.hatanaka.ecommerce.checkout.util.UUIDUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,30 +23,31 @@ public class CheckoutServiceImpl implements CheckoutService {
 
     private final CheckoutRepository checkoutRepository;
     private final CheckoutCreatedSource checkoutCreatedSource;
+    private final UUIDUtil uuidUtil;
 
     @Override
     public Optional<CheckoutEntity> create(CheckoutRequest checkoutRequest) {
         log.info("M=create, checkoutRequest={}", checkoutRequest);
         final CheckoutEntity checkoutEntity = CheckoutEntity.builder()
-                .code(UUID.randomUUID().toString())
+                .code(uuidUtil.createUUID().toString())
                 .status(CheckoutEntity.Status.CREATED)
                 .saveAddress(checkoutRequest.getSaveAddress())
                 .saveInformation(checkoutRequest.getSaveInfo())
                 .shipping(ShippingEntity.builder()
-                                  .address(checkoutRequest.getAddress())
-                                  .complement(checkoutRequest.getComplement())
-                                  .country(checkoutRequest.getCountry())
-                                  .state(checkoutRequest.getState())
-                                  .cep(checkoutRequest.getCep())
-                                  .build())
+                        .address(checkoutRequest.getAddress())
+                        .complement(checkoutRequest.getComplement())
+                        .country(checkoutRequest.getCountry())
+                        .state(checkoutRequest.getState())
+                        .cep(checkoutRequest.getCep())
+                        .build())
                 .build();
         checkoutEntity.setItems(checkoutRequest.getProducts()
-                                        .stream()
-                                        .map(product -> CheckoutItemEntity.builder()
-                                                .checkout(checkoutEntity)
-                                                .product(product)
-                                                .build())
-                                        .collect(Collectors.toList()));
+                .stream()
+                .map(product -> CheckoutItemEntity.builder()
+                        .checkout(checkoutEntity)
+                        .product(product)
+                        .build())
+                .collect(Collectors.toList()));
         final CheckoutEntity entity = checkoutRepository.save(checkoutEntity);
         final CheckoutCreatedEvent checkoutCreatedEvent = CheckoutCreatedEvent.newBuilder()
                 .setCheckoutCode(entity.getCode())

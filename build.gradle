@@ -7,11 +7,14 @@ plugins {
 
 group = 'com.hatanaka.ecommerce'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '14'
+sourceCompatibility = '11'
 
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
+    }
+    cucumberRuntime {
+        extendsFrom testImplementation
     }
 }
 
@@ -24,6 +27,10 @@ repositories {
 
 ext {
     set('springCloudVersion', "Hoxton.SR6")
+    set('cucumberVersion', '7.0.0')
+    set('testContanersVersion','1.16.3')
+    set('wireMockVersion','2.32.0')
+    set('junitVersion','5.8.7')
 }
 
 dependencies {
@@ -40,6 +47,15 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'org.springframework.cloud:spring-cloud-stream-test-support'
+    testImplementation("io.cucumber:cucumber-java:$cucumberVersion")
+    testImplementation("io.cucumber:cucumber-junit:$cucumberVersion")
+    testImplementation("io.cucumber:cucumber-spring:$cucumberVersion")
+    testImplementation("org.testcontainers:testcontainers:$testContanersVersion")
+    testImplementation("org.testcontainers:kafka:$testContanersVersion")
+    testImplementation("org.testcontainers:postgresql:$testContanersVersion")
+    testImplementation "com.github.tomakehurst:wiremock-jre8:$wireMockVersion"
+    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock")
+
 }
 
 dependencyManagement {

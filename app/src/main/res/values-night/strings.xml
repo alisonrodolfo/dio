@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="titulo">Titulo</string>
+    <string name="data">Data</string>
+    <string name="hora">Hora</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="tarefas">Tarefas</string>
+    <string name="editar">Editar</string>
+    <string name="deletar">Deletar</string>
+    <string name="ops_voc_n_o_tem_n_nenhuma_tarefa">Ops, Vocênão tem\n nenhuma tarefa</string>
+</resources>

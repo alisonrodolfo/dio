@@ -28,5 +28,13 @@
 
 Para obter este projeto em sua máquina de desenvolvimento, basta usar clone do git.
 
-
 🥳 
+
+<div align="center">
+  <img  src="/img/index.PNG"/>
+</div>
+
+
+<div align="center">
+  <img src="/img/home.PNG"/>
+</div>

@@ -1,0 +1,381 @@
+:root{
+  --vermelho:#E50914;
+  --preta:#141414;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+/* BASIC SETUP */
+  
+.page-wrapper {
+  width: 100%;
+  height: auto;
+}
+
+#navbar .nav {
+  height: 60px;
+  width: 100%;
+  background: linear-gradient(rgb(44, 44, 44),rgb(0, 0, 0));
+  position: fixed;
+  z-index: 999;
+}
+
+#navbar .nav .nav-header {
+  display: inline;
+  
+}
+#navbar .nav-title img{
+    height: 80px;
+    width: 150px;
+    float: left;
+    position: absolute;
+    top: -10px;
+}
+
+#navbar .nav .nav-header .nav-title {
+  display: inline;
+  color: #fff;
+  padding: 0;
+}
+
+#navbar .nav .nav-btn {
+  display: none;
+}
+
+#navbar .nav .nav-links {
+  display: inline;
+  font-size: 20px;
+  position: absolute;
+  right: 300px;
+}
+#navbar .nav .nav-logos {
+  display: inline;
+  position: absolute;
+  right: 0;
+  top: 25%;
+  font-size: 25px;
+}
+#navbar .nav .nav-logos a{
+    padding: 0 30px;
+    text-decoration: none;
+    display: inline;
+    vertical-align: middle;
+    color: white;
+}
+#navbar .nav .nav-links a {
+  display: inline-block;
+  padding: 13px 10px;
+  text-decoration: none;
+  opacity: 0.4;
+  color: #efefef;
+  transition: 0.3s;
+}
+#navbar .nav .nav-links a:hover {
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+#navbar .nav .nav-links .active{
+  opacity: 1;
+  font-size: 22px;
+}
+#navbar .nav .nav-logos sup{
+  text-decoration: none;
+  font-size: 7px;
+  color: #efefef;
+  background: #E50914;
+  border: 1px solid #E50914;
+  border-radius: 50%;
+  padding: 1px 3px 0 2px;
+  position: relative;
+  top: -4px;
+  left: -1px;
+}
+
+
+#navbar .nav .avatar{
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    border-radius: 2px;
+}  
+#navbar .nav-logos .fa-angle-down{
+  padding: 5px;
+  font-size: 13px;
+  animation: none!important;
+  color: white!important;
+}
+#navbar .nav #nav-check {
+  display: none;
+}
+#navbar .nav .nav-logos a:hover{
+  color: #E50914;
+}
+
+
+/*elementos base*/
+body{
+ background: var(--preta);
+ font-family: 'Arial', Times, serif;
+ color:white;
+}
+
+
+header .container{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px
+}
+
+header .logo{
+  margin-left: 5px;
+  color: var(--vermelho);
+  font-family: 'Arial Black', Times;
+  font-size:10px;
+
+}
+
+header nav a{
+  display: inline-block;
+  padding: 13px 10px;
+  text-decoration: none;
+  opacity: 0.4;
+  color: #efefef;
+  transition: 0.3s;
+}
+
+
+header nav a:hover{
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+/*filme principal*/
+.filme-principal {
+font-size: 16px;
+background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) 100%),
+  url('../img/capa-house.jpg');
+
+height: 450px;
+background-size: cover;
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+}
+
+
+.filme-principal .descricao{
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+
+.filme-principal .titulo{
+  margin-top: 15%;
+  font-size: 40px;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+.botao{
+  background-color: rgba(0,0,0,.50);
+  border:none;
+  color: white;
+
+  padding:15px 30px;
+  margin-right: 15px;
+  font-size: 12px;
+
+  cursor: pointer;
+  transition: .3s ease all;
+}
+
+.botao:hover{
+  background-color:white;
+  color:black;
+}
+
+.botao i{
+  margin-right: 8px;
+}
+
+
+.container{
+  margin-left: 20px;
+}
+
+.filme-principal .container{
+  width: 70%;
+}
+
+.box-filme{
+  height: 100%;
+  width: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+
+.carrosel-filmes{
+  margin-top:5px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+#bg{
+
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0, .8);
+  position: fixed;
+  display: none;
+}
+
+#bg:target{
+  display: block;
+}
+
+#bg:target ~ .box{
+  top: 150px;
+  transition: all .3s;
+  transition-delay: .2s;
+}
+
+.box{
+
+  width: 720px;
+  height: 405px;
+  position: absolute;
+  margin-left: -360px;
+  left: 50%;
+  top: -610px;
+}
+
+.box img{
+  
+   width: 100%;
+   position: absolute;
+}
+
+#close{
+  color: #fff;
+  font-family: 'Arial';
+  text-decoration: none;
+  font-size: 35px;
+  position: absolute;
+  background-color: #000;
+  width: 40px;
+  height: 40px;
+  text-align:	center;
+  right: 0;
+}
+
+#close:hover{
+  opacity: .6;
+}
+
+/*Movies */
+.movies {
+  width: 100%;
+  height: auto;
+  background: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.9));
+  display: flex;
+  /* padding: 0px 20px; */
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.movie-container {
+  margin: 5px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.movie-container p {
+  color: rgb(158, 158, 158);
+  text-align: left;
+  line-height: 1.4;
+  font-size: 14px;
+  margin: 0 0 15px 10px;
+}
+.movie-container h3{
+    margin-left: 10px;
+    color: white;
+}
+.movie-container h3 span{
+    font-size: 12px;
+    border: 1px solid whitesmoke;
+    padding:1px 1px 3px 1px;
+    margin-top: -20px!important;
+    margin-right:6px;
+}
+.movie-container img {
+  width: 100%;
+  max-width: 240px;
+  height: 140px;
+  border-radius: 4px;
+  /* margin-bottom: 15px; */
+}
+.movie-container:hover {
+      transform: scale(1.07);
+  }
+  
+
+  .headline aside .playBtn{
+      width: 100px;
+      color: #000;
+      background: rgba(255, 255, 255,0.8);
+      font-weight: 700;
+      padding: 8px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      transition: 0.5s;
+  }
+  .headline aside .playBtn:hover{
+      background: rgba(255, 255, 255,1);
+  }
+  .headline aside .playBtn:hover i,
+    .headline aside .moreBtn:hover i{
+      animation: vibrate 0.5s ease;
+   }
+   @keyframes vibrate{
+       0%,100%{
+           transform: translateX(-1px) scale(1);
+       }
+       50%{
+           transform: translateX(1px) scale(1.05);
+       }
+   }
+  .headline aside .moreBtn{
+    width: 130px;
+    color: #fff;
+    cursor: pointer;
+    background: rgb(44, 44, 44);
+    font-weight: 600;
+    padding: 9px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.5s;
+  }
+  .headline aside .moreBtn:hover{
+    background: rgba(62, 62, 62,1);
+  }
+  .headline aside button .play{
+      font-size: 17px;
+      margin-left: 7px;
+  }
+  .headline aside button .more{
+    font-size: 17px;
+    margin-left: 7px;
+  }
